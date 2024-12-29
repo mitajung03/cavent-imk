@@ -241,9 +241,10 @@ const Category = ({ params }: { params: { slug: string } }) => {
         console.error('Error fetching data:', error);
       }
     };
-
+  
     fetchData();
   }, [slug]);
+  
 
   const categories = ['ALL', 'PARAMADINA', 'DKV', 'TI', 'DP', 'MENE', 'IKOM', 'HI', 'DKM'];
 
