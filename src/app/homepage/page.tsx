@@ -19,10 +19,10 @@ const eventsTop = [
     },
     {
       id: 2,
-      image: 'perkara-dp.svg',
-      owner: 'inprodesparamadina',
-      profilePic: 'inprodes.svg',
-      email: 'inprodes@paramadina.ac.id',
+      image: 'praikom.svg',
+      owner: 'komikparamadina',
+      profilePic: 'komik.svg',
+      email: 'komik@paramadina.ac.id',
     },
     {
       id: 3,
@@ -55,11 +55,20 @@ const eventsTop = [
       profilePic: 'rupakapala.svg',
       email: 'rupakapala@paramadina.ac.id',
     },
+
+    {
+      id: 7,
+      image: 'workshopperkara.svg',
+      owner: 'inprodesparamadina',
+      profilePic: 'inprodes.svg',
+      email: 'inprodes@paramadina.ac.id',
+    },
+
   ];
   
   const eventsBottom = [
     {
-      id: 4,
+      id: 8,
       image: 'perkara-dp.svg',
       owner: 'inprodesparamadina',
       profilePic: 'inprodes.svg',
@@ -70,7 +79,7 @@ const eventsTop = [
       commentCount: 60,
     },
     {
-      id: 5,
+      id: 9,
       image: 'green-campus-dkm.svg',
       owner: 'dkmparamadina',
       profilePic: 'dkm.svg',
@@ -81,7 +90,7 @@ const eventsTop = [
       commentCount: 50,
     },
     {
-      id: 6,
+      id: 10,
       image: 'batikday-ikom.svg',
       owner: 'komikparamadina',
       profilePic: 'komik.svg',
@@ -191,6 +200,7 @@ const HomePage = () => {
           {eventsBottom.map((event) => (
             <div
               key={event.id}
+              onClick={() => router.push(`/event-feedback/${event.id}`)}
               className="relative w-full bg-white mb-4 overflow-hidden shadow-md"
             >
               {/* Profile dan Info EO */}
