@@ -29,30 +29,56 @@ interface eventsData {
 }
 
 const eventsData: eventsData = {
-  dkv: {
+  paramadina: {
     eventsTop: [
       {
         id: 1,
-        image: '/rekreasi-dkv.svg',
-        owner: 'rupakapalaparamadina',
-        profilePic: '/rupakapala.svg',
-        email: 'rupakapala@paramadina.ac.id',
+        image: '/kuliah-kebangsaan-paramadina.svg',
+        owner: 'universitas_paramadina',
+        profilePic: '/paramadina.svg',
+        email: 'info@paramadina.ac.id',
       },
     ],
     eventsBottom: [
       {
-        id: 6,
-        image: '/rekreasi-dkv.svg',
-        owner: 'rupakapalaparamadina',
-        profilePic: '/rupakapala.svg',
-        email: 'rupakapala@paramadina.ac.id',
-        description: 'Terima kasih kepada seluruh peserta yang telah mengikuti acara kami!❤️',
-        postTime: '1 days ago',
-        likeCount: 200,
-        commentCount: 60,
+        id: 11,
+        image: '/workshop.svg',
+        owner: 'universitas_paramadina',
+        profilePic: '/paramadina.svg',
+        email: 'info@paramadina.ac.id',
+        description: '🎓 Workshop Eksklusif! ✨ Tips dan Trik Pencapaian Akreditasi Unggul Program Studi Magister Manajemen',
+        postTime: '3 days ago',
+        likeCount: 100,
+        commentCount: 30,
       },
     ],
   },
+
+  ikom: {
+    eventsTop: [
+      {
+        id: 2,
+        image: '/praikom.svg',
+        owner: 'komikparamadina',
+        profilePic: '/komik.svg',
+        email: 'komik@paramadina.ac.id',
+      },
+    ],
+    eventsBottom: [
+      {
+        id: 15,
+        image: '/batikday-ikom.svg',
+        owner: 'komikparamadina',
+        profilePic: '/komik.svg',
+        email: 'komik@paramadina.ac.id',
+        description: 'Innovative ideas and events from the IKom department! 🚀',
+        postTime: '7 days ago',
+        likeCount: 250,
+        commentCount: 75,
+      },
+    ],
+  },
+
     ti: {
       eventsTop: [
         {
@@ -65,8 +91,8 @@ const eventsData: eventsData = {
       ],
       eventsBottom: [
         {
-          id: 4,
-          image: '/evos-ti.svg',
+          id: 13,
+          image: '/ticikarang.svg',
           owner: 'himtiparamadina',
           profilePic: '/himti.svg',
           email: 'himti@paramadina.ac.id',
@@ -77,6 +103,32 @@ const eventsData: eventsData = {
         },
       ],
     },
+
+    hi: {
+      eventsTop: [
+        {
+          id: 4,
+          image: '/lsmun-hi.svg',
+          owner: 'himahiparamadina',
+          profilePic: '/himahi.svg',
+          email: 'himamen@paramadina.ac.id',
+        },
+      ],
+      eventsBottom: [
+        {
+          id: 16,
+          image: '/fgdhimahi.svg',
+          owner: 'himahiparamadina',
+          profilePic: '/himahi.svg',
+          email: 'himahi@paramadina.ac.id',
+          description: 'Thankyou to our Focus Group Discussion participants! 🌍',
+          postTime: '8 days ago',
+          likeCount: 300,
+          commentCount: 90,
+        },
+      ],
+    },
+
     mene: {
       eventsTop: [
         {
@@ -89,8 +141,8 @@ const eventsData: eventsData = {
       ],
       eventsBottom: [
         {
-          id: 5,
-          image: '/revisi-mene.svg',
+          id: 14,
+          image: '/bisik.svg',
           owner: 'himamenparamadina',
           profilePic: '/himamen.svg',
           email: 'himamen@paramadina.ac.id',
@@ -101,35 +153,38 @@ const eventsData: eventsData = {
         },
       ],
     },
-    paramadina: {
+
+    dkv: {
       eventsTop: [
         {
-          id: 7,
-          image: '/kuliah-kebangsaan-paramadina.svg',
-          owner: 'universitas_paramadina',
-          profilePic: '/paramadina.svg',
-          email: 'info@paramadina.ac.id',
+          id: 6,
+          image: '/rekreasi-dkv.svg',
+          owner: 'rupakapalaparamadina',
+          profilePic: '/rupakapala.svg',
+          email: 'rupakapala@paramadina.ac.id',
         },
       ],
       eventsBottom: [
         {
-          id: 8,
-          image: '/kuliah-kebangsaan-paramadina.svg',
-          owner: 'universitas_paramadina',
-          profilePic: '/paramadina.svg',
-          email: 'info@paramadina.ac.id',
-          description: 'A great event organized by Paramadina! 🎉',
-          postTime: '3 days ago',
-          likeCount: 100,
-          commentCount: 30,
+          id: 12,
+          image: '/drawing.svg',
+          owner: 'rupakapalaparamadina',
+          profilePic: '/rupakapala.svg',
+          email: 'rupakapala@paramadina.ac.id',
+          description: 'Terima kasih kepada seluruh peserta yang telah mengikuti acara kami!❤️',
+          postTime: '1 days ago',
+          likeCount: 200,
+          commentCount: 60,
         },
       ],
     },
+    
+
     dp: {
       eventsTop: [
         {
-          id: 9,
-          image: '/perkara-dp.svg',
+          id: 7,
+          image: '/workshopperkara.svg',
           owner: 'inprodesparamadina',
           profilePic: '/inprodes.svg',
           email: 'inprodes@paramadina.ac.id',
@@ -137,7 +192,7 @@ const eventsData: eventsData = {
       ],
       eventsBottom: [
         {
-          id: 10,
+          id: 8,
           image: '/perkara-dp.svg',
           owner: 'inprodesparamadina',
           profilePic: '/inprodes.svg',
@@ -149,54 +204,7 @@ const eventsData: eventsData = {
         },
       ],
     },
-    ikom: {
-      eventsTop: [
-        {
-          id: 11,
-          image: '/batikday-ikom.svg',
-          owner: 'komikparamadina',
-          profilePic: '/komik.svg',
-          email: 'komik@paramadina.ac.id',
-        },
-      ],
-      eventsBottom: [
-        {
-          id: 12,
-          image: '/batikday-ikom.svg',
-          owner: 'komikparamadina',
-          profilePic: '/komik.svg',
-          email: 'komik@paramadina.ac.id',
-          description: 'Innovative ideas and events from the IKom department! 🚀',
-          postTime: '7 days ago',
-          likeCount: 250,
-          commentCount: 75,
-        },
-      ],
-    },
-    hi: {
-      eventsTop: [
-        {
-          id: 13,
-          image: '/lsmun-hi.svg',
-          owner: 'himahiparamadina',
-          profilePic: '/himahi.svg',
-          email: 'himamen@paramadina.ac.id',
-        },
-      ],
-      eventsBottom: [
-        {
-          id: 14,
-          image: '/lsmun-hi.svg',
-          owner: 'himahiparamadina',
-          profilePic: '/himahi.svg',
-          email: 'himamen@paramadina.ac.id',
-          description: 'Exciting events hosted by the HI department! 🌍',
-          postTime: '8 days ago',
-          likeCount: 300,
-          commentCount: 90,
-        },
-      ],
-    },
+    
     dkm: {
       eventsTop: [
         {
@@ -232,7 +240,7 @@ const Category = ({ params }: { params: Promise<{ slug: string }> }) => {
 
   useEffect(() => {
     const fetchSlug = async () => {
-      const resolvedParams = await params; // Wait for the promise to resolve
+      const resolvedParams = await params;
       setSlug(resolvedParams.slug);
       setSelectedCategory(resolvedParams.slug.toUpperCase());
     };
@@ -346,6 +354,7 @@ const Category = ({ params }: { params: Promise<{ slug: string }> }) => {
           {eventsBottom.map((event) => (
             <div
               key={event.id}
+              onClick={() => router.push(`/event-feedback/${event.id}`)}
               className="relative w-full bg-white mb-4 overflow-hidden shadow-md"
             >
               <div className="flex items-center p-4">
