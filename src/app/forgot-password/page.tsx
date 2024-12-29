@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const ForgotPassword = () => {
   const [code, setCode] = useState(["", "", "", ""]);
@@ -8,6 +9,8 @@ const ForgotPassword = () => {
   const [focusIndex, setFocusIndex] = useState<number | null>(null);
   const [message, setMessage] = useState(""); // Track messages
   const [messageType, setMessageType] = useState<"success" | "error" | "">(""); // Track message type
+  const [redirectMessage, setRedirectMessage] = useState(false); // Track redirect message state
+  const router = useRouter(); // Next.js router for navigation
 
   const handleInputChange = (value: string, index: number) => {
     if (value.length <= 1 && /^\d*$/.test(value)) {
@@ -29,8 +32,19 @@ const ForgotPassword = () => {
 
   const handleSubmit = () => {
     if (code.join("") === "1234") {
-      setMessage("Password Reset Success! Check your email to see your new password!");
+      setMessage("Password Reset Success! Check your email to see your new password.");
       setMessageType("success"); // Set message type to success
+
+      // Tampilkan pesan redirect setelah delay singkat
+      setTimeout(() => {
+        setMessage(""); // Hapus pesan sukses
+        setRedirectMessage(true); // Tampilkan pesan redirect
+      }, 1500);
+
+      // Redirect to sign-in page after 3 seconds
+      setTimeout(() => {
+        router.push("/sign-in"); // Replace "/sign-in" with your actual sign-in route
+      }, 3000);
     } else {
       setMessage("Verification Failed! Please check your code and try again.");
       setMessageType("error"); // Set message type to error
@@ -115,12 +129,19 @@ const ForgotPassword = () => {
           </button>
         </div>
 
-        {/* Move the message here below the submit button */}
+        {/* Tampilkan pesan di bawah tombol submit */}
         {message && (
           <div className="text-center text-sm mt-4">
             <p className={messageType === "success" ? "text-green-500" : "text-red-500"}>
               {message}
             </p>
+          </div>
+        )}
+
+        {/* Tampilkan pesan redirect */}
+        {redirectMessage && (
+          <div className="text-center text-sm mt-4">
+            <p className="text-black">Redirecting to Sign-In...</p>
           </div>
         )}
       </div>
