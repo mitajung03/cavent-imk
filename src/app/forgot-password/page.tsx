@@ -1,68 +1,61 @@
 'use client';
+import { useState, useEffect } from "react";
 import Image from "next/image";
-import React, { useRef, useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 
 const ForgotPassword = () => {
-  const inputRefs = useRef([]);
-  const [verificationCode, setVerificationCode] = useState("");
-  const [message, setMessage] = useState(null);
-  const router = useRouter();
+  const [code, setCode] = useState(["", "", "", ""]);
+  const [email, setEmail] = useState("");
+  const [focusIndex, setFocusIndex] = useState<number | null>(null);
+  const [message, setMessage] = useState(""); // Track messages
+  const [messageType, setMessageType] = useState<"success" | "error" | "">(""); // Track message type
 
-  useEffect(() => {
-    // Gunakan efek untuk operasi yang hanya berjalan di klien
-  }, []);
+  const handleInputChange = (value: string, index: number) => {
+    if (value.length <= 1 && /^\d*$/.test(value)) {
+      const newCode = [...code];
+      newCode[index] = value;
+      setCode(newCode);
 
-  const handleInputChange = (e, index) => {
-    const { value } = e.target;
-
-    if (/^\d$/.test(value)) {
-      setVerificationCode((prev) => {
-        const codeArray = prev.split("");
-        codeArray[index] = value;
-        return codeArray.join("");
-      });
-
-      if (index < inputRefs.current.length - 1) {
-        inputRefs.current[index + 1]?.focus();
+      // Pindah ke input berikutnya jika ada dan value tidak kosong
+      if (value && index < 3) {
+        setFocusIndex(index + 1);
       }
-    } else {
-      e.target.value = "";
+
+      // Jika value kosong, mundur ke input sebelumnya
+      if (!value && index > 0) {
+        setFocusIndex(index - 1);
+      }
     }
   };
 
-  const handleKeyDown = (e, index) => {
-    if (e.key === "Backspace" && index > 0 && !e.target.value) {
-      inputRefs.current[index - 1]?.focus();
+  const handleSubmit = () => {
+    if (code.join("") === "1234") {
+      setMessage("Password Reset Success! Check your email to see your new password!");
+      setMessageType("success"); // Set message type to success
+    } else {
+      setMessage("Verification Failed! Please check your code and try again.");
+      setMessageType("error"); // Set message type to error
     }
   };
 
   const handleSendCode = () => {
-    setMessage({
-      type: "info",
-      text: "Reset password success! Please check your email to see the verification code.",
-    });
-  };
-
-  const handleSubmit = () => {
-    const correctCode = "1234";
-
-    if (verificationCode === correctCode) {
-      setMessage({
-        type: "success",
-        text: "Password Reset Success! Check your email to see your new password!",
-      });
-
-      setTimeout(() => {
-        router.push("/sign-in");
-      }, 3000);
+    if (email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setMessage("Reset password success! Please check your email to see the verification code.");
+      setMessageType("success"); // Set message type to success
     } else {
-      setMessage({
-        type: "error",
-        text: "Verification Failed! Please check your code and try again.",
-      });
+      setMessage("Please enter a valid email address.");
+      setMessageType("error"); // Set message type to error
     }
   };
+
+  // Gunakan useEffect untuk memindahkan fokus secara otomatis
+  useEffect(() => {
+    if (focusIndex !== null) {
+      const inputElement = document.getElementById(`input-${focusIndex}`);
+      if (inputElement) {
+        (inputElement as HTMLInputElement).focus();
+      }
+    }
+  }, [focusIndex]);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen shadow-xl bg-white px-4 border border-gray-300">
@@ -82,6 +75,8 @@ const ForgotPassword = () => {
           <input
             type="email"
             placeholder="Alamat email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-transparent"
           />
         </div>
@@ -89,6 +84,7 @@ const ForgotPassword = () => {
         <div className="mb-4 text-right text-xs -mt-3">
           <button
             onClick={handleSendCode}
+            disabled={!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)} // Disable button if email is invalid
             className="text-blue-500 hover:underline"
           >
             Send code
@@ -98,37 +94,33 @@ const ForgotPassword = () => {
         <div className="flex justify-center items-center gap-2 mb-6">
           {[...Array(4)].map((_, index) => (
             <input
+              id={`input-${index}`} // Berikan ID untuk setiap input
               key={index}
               type="text"
-              maxLength="1"
+              value={code[index]}
+              onChange={(e) => handleInputChange(e.target.value, index)}
+              autoFocus={focusIndex === index} // Fokuskan input yang sesuai dengan focusIndex
               className="w-12 h-12 border border-gray-300 rounded-md text-center text-lg font-bold outline-none focus:ring-2 focus:ring-sky-300 focus:border-transparent"
-              ref={(el) => (inputRefs.current[index] = el)}
-              onChange={(e) => handleInputChange(e, index)}
-              onKeyDown={(e) => handleKeyDown(e, index)}
             />
           ))}
         </div>
 
-        <div className="flex justify-center w-full">
+        <div className="w-full flex justify-center">
           <button
             onClick={handleSubmit}
-            className="w-52 h-12 bg-gradient-to-r from-cyan-600 to-cyan-600 text-white py-2 rounded-lg shadow-lg hover:opacity-90 mt-10"
+            className="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-300"
+            disabled={code.join("").length !== 4} // Disable submit button if the code is not complete
           >
             Submit
           </button>
         </div>
 
+        {/* Move the message here below the submit button */}
         {message && (
-          <div
-            className={`mt-6 p-4 text-center rounded-lg shadow-md ${
-              message.type === "success"
-                ? "bg-green-100 text-green-700"
-                : message.type === "error"
-                ? "bg-red-100 text-red-700"
-                : "bg-blue-100 text-blue-700"
-            }`}
-          >
-            {message.text}
+          <div className="text-center text-sm mt-4">
+            <p className={messageType === "success" ? "text-green-500" : "text-red-500"}>
+              {message}
+            </p>
           </div>
         )}
       </div>
