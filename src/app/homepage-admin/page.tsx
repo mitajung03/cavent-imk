@@ -7,7 +7,7 @@ import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 import { FaHeart, FaComment } from 'react-icons/fa';
 import { useRouter } from 'next/navigation';
-import Navbar from '../components/navbar';
+import Navbar from '../components/navbaradmin';
 
 const eventsTop = [
     {
@@ -19,10 +19,10 @@ const eventsTop = [
     },
     {
       id: 2,
-      image: 'perkara-dp.svg',
-      owner: 'inprodesparamadina',
-      profilePic: 'inprodes.svg',
-      email: 'inprodes@paramadina.ac.id',
+      image: 'praikom.svg',
+      owner: 'komikparamadina',
+      profilePic: 'komik.svg',
+      email: 'komik@paramadina.ac.id',
     },
     {
       id: 3,
@@ -55,11 +55,20 @@ const eventsTop = [
       profilePic: 'rupakapala.svg',
       email: 'rupakapala@paramadina.ac.id',
     },
+
+    {
+      id: 7,
+      image: 'workshopperkara.svg',
+      owner: 'inprodesparamadina',
+      profilePic: 'inprodes.svg',
+      email: 'inprodes@paramadina.ac.id',
+    },
+
   ];
   
   const eventsBottom = [
     {
-      id: 4,
+      id: 8,
       image: 'perkara-dp.svg',
       owner: 'inprodesparamadina',
       profilePic: 'inprodes.svg',
@@ -70,7 +79,7 @@ const eventsTop = [
       commentCount: 60,
     },
     {
-      id: 5,
+      id: 9,
       image: 'green-campus-dkm.svg',
       owner: 'dkmparamadina',
       profilePic: 'dkm.svg',
@@ -81,7 +90,7 @@ const eventsTop = [
       commentCount: 50,
     },
     {
-      id: 6,
+      id: 10,
       image: 'batikday-ikom.svg',
       owner: 'komikparamadina',
       profilePic: 'komik.svg',
@@ -97,7 +106,7 @@ const HomePage = () => {
   const [selectedCategory, setSelectedCategory] = useState('ALL');
   const router = useRouter();
 
-  const categories = ['ALL', 'PARAMADINA', 'DKV', 'TI', 'DP', 'MENE', 'IKOM', 'HI'];
+  const categories = ['ALL', 'PARAMADINA', 'DKV', 'TI', 'DP', 'MENE', 'IKOM', 'HI', 'DKM'];
 
   return (
     <div className="flex flex-col items-center justify-start shadow-xl bg-white px-4 border border-gray-300 pb-16">
@@ -151,36 +160,34 @@ const HomePage = () => {
         >
           {eventsTop.map((event) => (
             <SwiperSlide key={event.id}>
-              <div
-                className="relative w-full h-[300px] bg-white overflow-hidden shadow-md cursor-pointer">
+            <div
+              onClick={() => router.push(`/event-details/${event.id}`)}
+              className="relative w-full h-[300px] bg-white overflow-hidden shadow-md cursor-pointer"
+            >
+              <Image
+                src={event.image}
+                alt="image"
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
+            <div className="mt-4 flex items-center gap-4">
+              <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-gray-100">
                 <Image
-                  src={event.image}
-                  alt="image"
-                  layout="fill"
-                  objectFit="cover"
+                  src={event.profilePic}
+                  alt={event.owner}
+                  width={48}
+                  height={48}
+                  className="object-cover"
                 />
               </div>
-
-              {/* Info Pemilik Event */}
-              <div className="mt-4 flex items-center gap-4">
-                {/* Profile Image */}
-                <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-gray-100">
-                  <Image
-                    src={event.profilePic}
-                    alt={event.owner}
-                    width={48}
-                    height={48}
-                    className="object-cover"
-                  />
-                </div>
-
-                {/* Nama dan Email Pemilik Event */}
-                <div>
-                  <p className="text-sm font-semibold text-gray-800">@{event.owner}</p>
-                  <p className="text-xs text-gray-500">{event.email}</p>
-                </div>
+              <div>
+                <p className="text-sm font-semibold text-gray-800">@{event.owner}</p>
+                <p className="text-xs text-gray-500">{event.email}</p>
               </div>
-            </SwiperSlide>
+            </div>
+          </SwiperSlide>
+          
           ))}
         </Swiper>
       </div>
@@ -193,6 +200,7 @@ const HomePage = () => {
           {eventsBottom.map((event) => (
             <div
               key={event.id}
+              onClick={() => router.push(`/event-feedback/${event.id}`)}
               className="relative w-full bg-white mb-4 overflow-hidden shadow-md"
             >
               {/* Profile dan Info EO */}

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { FaBell } from 'react-icons/fa';
-import Navbar from '../components/navbar';
+import Navbar from '../components/navbaradmin';
 
 const NotificationsPage = () => {
   const router = useRouter();

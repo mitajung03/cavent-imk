@@ -35,7 +35,7 @@ const Feedback = () => {
             {/* Isi */}
             <div className="flex flex-row items-start w-full mt-2">
                 <Image
-                    src="perkara.svg"
+                    src="perkara-dp.svg"
                     alt="image"
                     width={96}
                     height={96}

@@ -32,38 +32,37 @@ const MyListPage = () => {
     }
   ]);
 
-  const [showConfirmation, setShowConfirmation] = useState(false); // Modal visibility
-  const [itemToDelete, setItemToDelete] = useState<number | null>(null); // Item to be deleted
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState<number | null>(null); 
 
   const handleTabChange = (tab: 'notifications' | 'mylist') => {
     setActiveTab(tab);
-    localStorage.setItem('lastVisitedTab', tab); // Store last visited tab
+    localStorage.setItem('lastVisitedTab', tab);
 
     if (tab === 'notifications') {
-      router.push('/notification'); // Navigate to the Notification page
+      router.push('/notification');
     } else if (tab === 'mylist') {
-      router.push('/mylist'); // Navigate to the My List page
+      router.push('/mylist');
     }
   };
 
   const handleCancelClick = (itemId: number) => {
-    setItemToDelete(itemId); // Set the item to be deleted
-    setShowConfirmation(true); // Show confirmation modal
+    setItemToDelete(itemId);
+    setShowConfirmation(true);
   };
 
   const handleDeleteItem = () => {
     if (itemToDelete !== null) {
-      // Remove the item from the list
       setMyListItems((prevItems) => prevItems.filter(item => item.id !== itemToDelete));
     }
-    setShowConfirmation(false); // Hide confirmation modal
-    setItemToDelete(null); // Reset the item to delete
+    setShowConfirmation(false);
+    setItemToDelete(null);
     alert('Event berhasil dihapus dan pendaftaranmu telah dibatalkan.'); // Show success message
   };
 
   const handleCancelDelete = () => {
-    setShowConfirmation(false); // Hide confirmation modal if canceled
-    setItemToDelete(null); // Reset the item to delete
+    setShowConfirmation(false);
+    setItemToDelete(null);
   };
 
   return (

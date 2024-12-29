@@ -1,44 +1,68 @@
-import { FaStar, FaUserCircle } from 'react-icons/fa';
+import { FaStar, FaUserCircle, FaHeart, FaComment } from 'react-icons/fa';
 import Image from 'next/image';
-import Footer from '../components/navbar';
+import Footer from '../../components/navbar';
 
-const AllFeedback = () => {
-  const users = [
-    {
-      name: "Jung Jamal",
-      feedback: "Acaranya sangat menarik. Membuka wawasan saya banget! Terima kasih!",
-      images: ["/perkara1.svg", "/perkara2.svg", "/perkara3.svg", "/perkara4.svg"]
-    },
-    {
-      name: "Januar Lim",
-      feedback: "Pengalaman saya sangat luar biasa! Banyak hal baru yang saya pelajari.",
-      images: ["/perkara4.svg", "/perkara3.svg", "/perkara2.svg", "/perkara1.svg"]
-    },
-    {
-      name: "Anwar Fauzi",
-      feedback: "Acara ini sangat bermanfaat dan penuh inspirasi.",
-      images: ["/perkara1.svg", "/perkara4.svg", "/perkara3.svg", "/perkara2.svg"]
-    },
-    {
-      name: "Dina Rahayu",
-      feedback: "Sangat informatif dan menyenangkan. Saya belajar banyak hal baru.",
-      images: ["/perkara2.svg", "/perkara1.svg", "/perkara4.svg", "/perkara3.svg"]
-    },
-    {
-      name: "Ika Septiani",
-      feedback: "Kegiatan ini sangat menyenangkan. Saya mendapatkan wawasan yang luas.",
-      images: ["/perkara3.svg", "/perkara4.svg", "/perkara1.svg", "/perkara2.svg"]
-    }
-  ];
+interface UserFeedback {
+  name: string;
+  feedback: string;
+  images: string[];
+}
 
+interface AllFeedbackProps {
+  posterSrc: string;
+  posterTitle: string;
+  likeCount: number;
+  commentCount: number;
+  description: string;
+  postTime: string;
+  users: UserFeedback[];
+}
+
+const AllFeedback = ({
+  posterSrc,
+  posterTitle,  // Menggunakan prop posterTitle
+  likeCount,
+  commentCount,
+  description,
+  postTime,
+  users,
+}: AllFeedbackProps) => {
   return (
     <div className="flex flex-col items-center justify-start min-h-screen shadow-lg bg-white px-4 border border-gray-300 pb-16">
       {/* Title */}
       <div className="w-[393px] border-b-2 border-gray-300 p-0 mb-0 shadow sticky top-0 bg-white z-10">
         <h1 className="text-center text-2xl font-bold text-black mt-4">Feedback</h1>
-        <h2 className="text-center text-xl font-semibold text-black mb-4">EFC CAMPUS PARMAD</h2>
+        <h2 className="text-center text-xl font-semibold text-black mb-4">{posterTitle}</h2>
       </div>
 
+      {/* Poster Section */}
+      <div className="w-full flex flex-col items-center my-4">
+        <Image
+          src={posterSrc}
+          alt="Poster"
+          width={350}
+          height={500}
+          objectFit="cover"
+        />
+
+        {/* Like, Comment, Description, and Time */}
+        <div className="mt-4 w-full px-4">
+          <div className="flex gap-4 mb-4 justify-start">
+            <button className="text-gray-600 hover:text-cyan-600 flex items-center">
+              <FaHeart className="w-5 h-5 mr-2" /> {likeCount}
+            </button>
+            <button className="text-gray-600 hover:text-cyan-600 flex items-center">
+              <FaComment className="w-5 h-5 mr-2" /> {commentCount}
+            </button>
+          </div>
+          <p className="text-sm text-gray-700 text-left mb-2">
+            {description}
+          </p>
+          <p className="text-xs text-gray-500 text-left">{postTime}</p>
+        </div>
+      </div>
+
+      {/* Feedback List */}
       {users.map((user, index) => (
         <div key={index} className="flex flex-col w-full mt-4 px-4 border-b-2 border-gray-200 pb-4">
           {/* Profile & Name */}
