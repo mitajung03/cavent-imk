@@ -1,4 +1,4 @@
-import EventsDetails from '../../components/events-details';
+import EventsDetails from '../../components/event-details-admin';
 
 const EventPage = () => {
     return (

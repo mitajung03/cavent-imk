@@ -355,7 +355,7 @@ const Category = ({ params }: { params: Promise<{ slug: string }> }) => {
             <div
               key={event.id}
               onClick={() => router.push(`/event-feedback-admin/${event.id}`)}
-              className="relative w-full h-[300px] bg-white overflow-hidden shadow-md cursor-pointer"
+              className="relative w-full bg-white mb-4 overflow-hidden shadow-md cursor-pointer"
             >
               <div className="flex items-center p-4">
                 <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-gray-100">

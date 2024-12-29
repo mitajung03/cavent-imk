@@ -4,7 +4,7 @@ import { BsFillTelephoneFill } from "react-icons/bs";
 import { FaTelegramPlane } from "react-icons/fa";
 import { TfiEmail } from "react-icons/tfi";
 import { MdCheckCircle } from 'react-icons/md';
-import Footer from "../components/navbar";
+import Footer from "../components/navbaradmin";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
@@ -21,7 +21,7 @@ const About = () => {
     
     const handleNotificationClose = () => {
         setShowNotification(false);
-        router.push('/about'); 
+        router.push('/about-admin'); 
     };
 
     return(

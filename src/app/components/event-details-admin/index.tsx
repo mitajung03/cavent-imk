@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { MdDateRange, MdAccessTime, MdOutlineEventAvailable, MdLocationOn, MdBookmarkBorder, MdClose } from 'react-icons/md';
-import Footer from '../navbaradmin';
+import Footer from '../navbar';
 
 interface EventDetailsProps {
     profileImage: string;
@@ -34,7 +34,7 @@ const EventDetails: React.FC<EventDetailsProps> = ({
     const router = useRouter();
 
     const handleClose = () => {
-        router.push('/homepage');
+        router.push('/homepage-admin');
     };
 
     return (

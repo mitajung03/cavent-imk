@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import Navbar from '../components/navbar';
+import Navbar from '../components/navbaradmin';
 import { FaList, FaBell, FaEnvelope, FaInfoCircle } from 'react-icons/fa';
 
 const ProfilePage = () => {
@@ -13,7 +13,7 @@ const ProfilePage = () => {
   const [email] = useState('himti@paramadina.ac.id');
   const [profilePic, setProfilePic] = useState('/icon.svg');
 
-  const handleNavigation = (page: 'mylist' | 'notification' | 'myfeedback' | 'about') => {
+  const handleNavigation = (page: 'mylist-admin' | 'notification-admin' | 'myfeedback' | 'about-admin') => {
     router.push(`/${page}`);
   };
 
@@ -29,8 +29,8 @@ const ProfilePage = () => {
   };
 
   const handleSave = () => {
-    setIsEditing(false); // Keluar dari mode edit setelah menyimpan
-    console.log('Profile saved:', { name, email, profilePic }); // Simulasi simpan data
+    setIsEditing(false); 
+    console.log('Profile saved:', { name, email, profilePic }); 
   };
 
   const handleSignOut = () => {
@@ -137,18 +137,18 @@ const ProfilePage = () => {
         {!isEditing && (
           <div className="flex flex-col space-y-4 mt-8 w-full">
             <button
-              onClick={() => handleNavigation('mylist')}
+              onClick={() => handleNavigation('mylist-admin')}
               className="flex items-center w-full px-4 py-2 text-sm font-medium text-cyan-600 bg-white rounded-md hover:bg-gray-100 border border-gray-300 focus:outline-none"
             >
               <FaList className="mr-3 text-cyan-600" />
-              My Event
+              Ongoing Events
             </button>
             <button
-              onClick={() => handleNavigation('notification')}
+              onClick={() => handleNavigation('notification-admin')}
               className="flex items-center w-full px-4 py-2 text-sm font-medium text-cyan-600 bg-white rounded-md hover:bg-gray-100 border border-gray-300 focus:outline-none"
             >
               <FaBell className="mr-3 text-cyan-600" />
-              Notification
+              Past Events
             </button>
             <button 
               onClick={() => handleNavigation('myfeedback')}
@@ -157,7 +157,7 @@ const ProfilePage = () => {
               Feedback
             </button>
             <button 
-              onClick={() => handleNavigation('about')}
+              onClick={() => handleNavigation('about-admin')}
               className="flex items-center w-full px-4 py-2 text-sm font-medium text-cyan-600 bg-white rounded-md hover:bg-gray-100 border border-gray-300 focus:outline-none">
               <FaInfoCircle className="mr-3 text-cyan-600" />
               About

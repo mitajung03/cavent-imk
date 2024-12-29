@@ -135,7 +135,7 @@ const HomePage = () => {
               key={category}
               onClick={() => {
                 setSelectedCategory(category);
-                router.push(`/homepage/${category.toLowerCase()}`);
+                router.push(`/homepage-admin/${category.toLowerCase()}`);
               }}
               className={`flex-shrink-0 px-4 py-2 rounded-lg font-medium ${
                 selectedCategory === category
@@ -161,7 +161,7 @@ const HomePage = () => {
           {eventsTop.map((event) => (
             <SwiperSlide key={event.id}>
             <div
-              onClick={() => router.push(`/event-details/${event.id}`)}
+              onClick={() => router.push(`/event-details-admin/${event.id}`)}
               className="relative w-full h-[300px] bg-white overflow-hidden shadow-md cursor-pointer"
             >
               <Image
@@ -200,8 +200,8 @@ const HomePage = () => {
           {eventsBottom.map((event) => (
             <div
               key={event.id}
-              onClick={() => router.push(`/event-feedback/${event.id}`)}
-              className="relative w-full bg-white mb-4 overflow-hidden shadow-md"
+              onClick={() => router.push(`/event-feedback-admin/${event.id}`)}
+              className="relative w-full bg-white mb-4 overflow-hidden shadow-md cursor-pointer"
             >
               {/* Profile dan Info EO */}
               <div className="flex items-center p-4">

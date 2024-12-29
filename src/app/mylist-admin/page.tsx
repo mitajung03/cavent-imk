@@ -11,25 +11,11 @@ const MyListPage = () => {
   const [myListItems, setMyListItems] = useState([
     {
       id: 1,
-      profilePic: '/inprodes.svg',
-      name: 'inprodesparamadina',
-      email: 'inprodesparamadina@gmail.com',
-      description: 'Seminar Desain Peran Desain Untuk Mencapai Sustainable Development Goals',
-    },
-    {
-      id: 2,
-      profilePic: '/rupakapala.svg',
-      name: 'rupakapala_dkv',
-      email: 'dkvparamadina@gmail.com',
-      description: 'Sustainable Development Goals saat ini menjadi tujuan dari semua industri dan lembaga di dunia.',
-    },
-    {
-      id: 3,
       profilePic: '/himti.svg',
       name: 'himtiparamadina',
       email: 'himti@paramadina.ac.id',
       description: 'Nobar EFC Pro Series, we dare you! to achieve your dreams through evos fams cup',
-    }
+    },
   ]);
 
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -83,13 +69,13 @@ const MyListPage = () => {
             onClick={() => handleTabChange('notifications-admin')}
             className={`px-4 py-2 text-sm font-medium ${activeTab === 'notifications-admin' ? 'text-white bg-cyan-600' : 'text-cyan-600 bg-white border border-cyan-600'} rounded-md`}
           >
-            Notification
+            Past Events
           </button>
           <button
             onClick={() => handleTabChange('mylist-admin')}
             className={`px-4 py-2 text-sm font-medium ${activeTab === 'mylist-admin' ? 'text-white bg-cyan-600' : 'text-cyan-600 bg-white border border-cyan-600'} rounded-md`}
           >
-            My List
+            Ongoing Events
           </button>
         </div>
       </div>

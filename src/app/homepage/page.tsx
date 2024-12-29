@@ -201,7 +201,7 @@ const HomePage = () => {
             <div
               key={event.id}
               onClick={() => router.push(`/event-feedback/${event.id}`)}
-              className="relative w-full bg-white mb-4 overflow-hidden shadow-md"
+              className="relative w-full bg-white mb-4 overflow-hidden shadow-md cursor-pointer"
             >
               {/* Profile dan Info EO */}
               <div className="flex items-center p-4">

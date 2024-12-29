@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { FaBell } from 'react-icons/fa';
 import Navbar from '../components/navbaradmin';
 
 const NotificationsPage = () => {
@@ -13,25 +12,11 @@ const NotificationsPage = () => {
   const notifications = [
     {
       id: 1,
-      profilePic: '/inprodes.svg',
-      name: 'inprodesparamadina',
-      email: 'inprodes@paramadina.ac.id',
-      description: 'Seminar Desain Peran Desain Untuk Mencapai Sustainable Development Goals',
-    },
-    {
-      id: 2,
-      profilePic: '/rupakapala.svg',
-      name: 'rupakapala_dkv',
-      email: 'rupakapala@paramadina.ac.id',
-      description: 'Sustainable Development Goals saat ini menjadi tujuan dari semua industri dan lembaga di dunia.',
-    },
-    {
-      id: 3,
       profilePic: '/himti.svg',
       name: 'himtiparamadina',
       email: 'himti@paramadina.ac.id',
-      description: 'Nobar EFC Pro Series, we dare you! to achieve your dreams through evos fams cup',
-    }
+      description: 'Membuka Jalan Menuju Kesuksesan Karir di Dunia Teknologi',
+    },
   ];
 
   const handleTabChange = (tab: 'notifications-admin' | 'mylist-admin') => {
@@ -63,13 +48,13 @@ const NotificationsPage = () => {
             onClick={() => handleTabChange('notifications-admin')}
             className={`px-4 py-2 text-sm font-medium ${activeTab === 'notifications-admin' ? 'text-white bg-cyan-600' : 'text-cyan-600 bg-white border border-cyan-600'} rounded-md`}
           >
-            Notification
+            Past Events
           </button>
           <button
             onClick={() => handleTabChange('mylist-admin')}
             className={`px-4 py-2 text-sm font-medium ${activeTab === 'mylist-admin' ? 'text-white bg-cyan-600' : 'text-cyan-600 bg-white border border-cyan-600'} rounded-md`}
           >
-            My List
+            Ongoing Events
           </button>
         </div>
       </div>
@@ -97,11 +82,6 @@ const NotificationsPage = () => {
               <p className="font-semibold text-gray-800">{notification.name}</p>
               <p className="text-sm text-gray-500">{notification.email}</p>
               <p className="mt-1 text-sm text-gray-700">{notification.description}</p>
-            </div>
-
-            {/* Notification Icon */}
-            <div className="ml-4">
-              <FaBell className="text-gray-500 w-5 h-5" />
             </div>
           </div>
         ))}
