@@ -234,13 +234,15 @@ const Category = ({ params }: { params: { slug: string } }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = eventsData[slug];
+        const response = await fetch(`/api/events/${slug}`);
+        const data = await response.json();
         setEventsTop(data?.eventsTop || []);
         setEventsBottom(data?.eventsBottom || []);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
+    
   
     fetchData();
   }, [slug]);
