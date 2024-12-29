@@ -6,7 +6,6 @@ const EventPage = () => {
             profileImage="/paramadina.svg"
             profileName="Universitas Paramadina"
             profileEmail="info@paramadina.ac.id"
-            profileDescription="Seminar Kuliah Kebangsaan Universitas Paramadina"
             posterImage="/kuliah-kebangsaan-paramadina.svg"
             eventTitle="Kuliah Kebangsaan Part 1"
             eventSubtitle="Universitas Paramadina"
