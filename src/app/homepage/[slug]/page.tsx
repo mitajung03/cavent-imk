@@ -223,26 +223,33 @@ const eventsData: eventsData = {
     },
 };
 
-const Category = ({ params }: { params: { slug: string } }) => {
-  const { slug } = params;
+const Category = ({ params }: { params: Promise<{ slug: string }> }) => {
+  const [slug, setSlug] = useState<string>('');
   const [selectedCategory, setSelectedCategory] = useState(slug.toUpperCase());
   const [eventsTop, setEventsTop] = useState<Event[]>([]);
   const [eventsBottom, setEventsBottom] = useState<Event[]>([]);
-
   const router = useRouter();
+
+  useEffect(() => {
+    const fetchSlug = async () => {
+      const resolvedParams = await params; // Wait for the promise to resolve
+      setSlug(resolvedParams.slug);
+      setSelectedCategory(resolvedParams.slug.toUpperCase());
+    };
+
+    fetchSlug();
+  }, [params]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`/api/events/${slug}`);
-        const data = await response.json();
+        const data = eventsData[slug];
         setEventsTop(data?.eventsTop || []);
         setEventsBottom(data?.eventsBottom || []);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
-    
   
     fetchData();
   }, [slug]);
@@ -278,7 +285,7 @@ const Category = ({ params }: { params: { slug: string } }) => {
                 router.push(`/homepage/${category.toLowerCase()}`);
               }}
               className={`flex-shrink-0 px-4 py-2 rounded-lg font-medium ${
-                selectedCategory === category
+                selectedCategory === category 
                   ? 'bg-cyan-600 text-white'
                   : 'bg-white border border-gray-400 text-gray-800 hover:bg-gray-100'
               }`}
