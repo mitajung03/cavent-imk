@@ -8,6 +8,7 @@ import { Navigation } from 'swiper/modules';
 import { FaHeart, FaComment } from 'react-icons/fa';
 import { useRouter } from 'next/navigation';
 import Navbar from '../../components/navbar';
+import Link from 'next/link';
 
 interface Event {
   id: number;
@@ -263,7 +264,7 @@ const Category = ({ params }: { params: Promise<{ slug: string }> }) => {
   }, [slug]);
   
 
-  const categories = ['ALL', 'PARAMADINA', 'DKV', 'TI', 'DP', 'MENE', 'IKOM', 'HI', 'DKM'];
+  const categories = ['PARAMADINA', 'DKV', 'TI', 'DP', 'MENE', 'IKOM', 'HI', 'DKM'];
 
   return (
     <div className="flex flex-col items-center justify-start shadow-xl bg-white px-4 border border-gray-300 pb-16">
@@ -285,6 +286,7 @@ const Category = ({ params }: { params: Promise<{ slug: string }> }) => {
       {/* Kategori Filter (Horizontal Scrollable) */}
       <div className="w-full overflow-x-auto mb-6">
         <div className="flex gap-4 justify-start px-2">
+        <Link href={"/homepage"} className='flex-shrink-0 px-4 py-2 rounded-lg font-medium bg-white border border-gray-400 text-gray-800 hover:bg-gray-100'>ALL</Link>
           {categories.map((category) => (
             <button
               key={category}
