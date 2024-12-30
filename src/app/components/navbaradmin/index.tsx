@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { useRouter, usePathname } from 'next/navigation';
-import { FaBell, FaHome, FaUser } from 'react-icons/fa';
+import { FaHome, FaUser, FaListUl } from 'react-icons/fa';
 
 const Footer = () => {
   const router = useRouter();
@@ -17,8 +17,8 @@ const Footer = () => {
           currentPath === '/notification-admin' ? 'text-cyan-600' : 'text-gray-600 hover:text-cyan-600'
         }`}
       >
-        <FaBell className="w-6 h-6" />
-        <span className="text-xs">Notification</span>
+        <FaListUl className="w-6 h-6" />
+        <span className="text-xs">Events</span>
       </button>
 
       {/* Home Button */}

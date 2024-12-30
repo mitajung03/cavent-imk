@@ -19,9 +19,11 @@ const AddEvent = () => {
     });
 
     const handleSubmit = () => {
-        console.log('New Event Data:', eventData);
+        const newEvent = { ...eventData, id: Date.now() }; // Generate unique ID
+        const existingEvents = JSON.parse(localStorage.getItem('mylist') || '[]'); // Get existing events
+        localStorage.setItem('mylist', JSON.stringify([...existingEvents, newEvent])); // Save new event
         alert('Event berhasil ditambahkan!');
-        router.push('/homepage'); // Redirect setelah submit
+        router.push('/mylist-admin'); // Redirect to My List page
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, field: string) => {
@@ -38,7 +40,7 @@ const AddEvent = () => {
             reader.onloadend = () => {
                 setEventData({
                     ...eventData,
-                    image: reader.result as string, // Save image as data URL
+                    image: reader.result as string,
                 });
             };
             reader.readAsDataURL(file);
@@ -46,12 +48,11 @@ const AddEvent = () => {
     };
 
     const handleCancel = () => {
-        router.push('/homepage'); // Batalkan dan kembali ke homepage
+        router.push('/mylist-admin');
     };
 
     return (
         <div className="relative mx-auto w-full min-h-screen bg-white border border-gray-300 overflow-x-hidden overflow-y-auto">
-            {/* Background Blur */}
             <div className="absolute inset-0 z-0">
                 <Image
                     src="/placeholder-bg.svg"
@@ -62,7 +63,6 @@ const AddEvent = () => {
                 />
             </div>
 
-            {/* Header */}
             <div className="relative z-10 w-full p-4 flex items-center justify-between bg-opacity-70">
                 <h1 className="text-lg font-bold">Add New Event</h1>
                 <button
@@ -74,7 +74,6 @@ const AddEvent = () => {
                 </button>
             </div>
 
-            {/* Form */}
             <div className="relative mx-auto px-6 w-full min-h-screen rounded-t-2xl bg-white border-t-2 border-gray-300 z-2 space-y-4">
                 <input
                     type="file"
@@ -130,7 +129,6 @@ const AddEvent = () => {
                     placeholder="Benefit (Certificate or Anything)"
                 />
 
-                {/* Submit Button */}
                 <div className="flex justify-center mt-6">
                     <button
                         onClick={handleSubmit}

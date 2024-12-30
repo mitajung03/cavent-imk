@@ -40,16 +40,18 @@ const MyListPage = () => {
 
   const handleDeleteItem = () => {
     if (itemToDelete !== null) {
-      setMyListItems((prevItems) => prevItems.filter(item => item.id !== itemToDelete));
+      setMyListItems((prevItems) => prevItems.filter((item) => item.id !== itemToDelete));
     }
     setShowConfirmation(false);
     setItemToDelete(null);
     alert('Event berhasil dihapus dan dibatalkan');
+    router.push('/mylist-admin');
   };
 
   const handleCancelDelete = () => {
     setShowConfirmation(false);
     setItemToDelete(null);
+    router.push('/mylist-admin');
   };
 
   const handleEditClick = () => {
@@ -72,13 +74,17 @@ const MyListPage = () => {
         <div className="flex space-x-4 items-center justify-center mt-20">
           <button
             onClick={() => handleTabChange('notifications-admin')}
-            className={`px-4 py-2 text-sm font-medium ${activeTab === 'notifications-admin' ? 'text-white bg-cyan-600' : 'text-cyan-600 bg-white border border-cyan-600'} rounded-md`}
+            className={`px-4 py-2 text-sm font-medium ${
+              activeTab === 'notifications-admin' ? 'text-white bg-cyan-600' : 'text-cyan-600 bg-white border border-cyan-600'
+            } rounded-md`}
           >
             Past Events
           </button>
           <button
             onClick={() => handleTabChange('mylist-admin')}
-            className={`px-4 py-2 text-sm font-medium ${activeTab === 'mylist-admin' ? 'text-white bg-cyan-600' : 'text-cyan-600 bg-white border border-cyan-600'} rounded-md`}
+            className={`px-4 py-2 text-sm font-medium ${
+              activeTab === 'mylist-admin' ? 'text-white bg-cyan-600' : 'text-cyan-600 bg-white border border-cyan-600'
+            } rounded-md`}
           >
             Ongoing Events
           </button>
@@ -125,8 +131,14 @@ const MyListPage = () => {
 
       {/* Confirmation Modal */}
       {showConfirmation && (
-        <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-80 text-center">
+        <div
+          className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-50"
+          onClick={() => setShowConfirmation(false)} // Menutup modal saat area gelap diklik
+        >
+          <div
+            className="bg-white p-6 rounded-lg shadow-lg w-80 text-center"
+            onClick={(e) => e.stopPropagation()} // Mencegah penutupan saat modal diklik
+          >
             <p className="text-lg font-semibold text-gray-800 mb-4">Ingin membatalkan event ini?</p>
             <div className="flex justify-around">
               <button
@@ -146,14 +158,13 @@ const MyListPage = () => {
         </div>
       )}
 
-
       {/* Edit Button */}
       <div className="relative w-full h-80 max-w-xs mt-4">
         <button
           onClick={handleEditClick}
           className="absolute bottom-16 right-4 p-4 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 focus:outline-none z-20"
         >
-      <FiPlus size={24} />
+          <FiPlus size={24} />
         </button>
       </div>
       {/* Footer */}

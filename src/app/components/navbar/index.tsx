@@ -18,7 +18,7 @@ const Footer = () => {
         }`}
       >
         <FaBell className="w-6 h-6" />
-        <span className="text-xs">Notification</span>
+        <span className="text-xs">Notif</span>
       </button>
 
       {/* Home Button */}
