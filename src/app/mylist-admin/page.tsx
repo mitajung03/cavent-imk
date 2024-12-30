@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import Navbar from '../components/navbaradmin';
+import { FiPlus } from 'react-icons/fi';
 
 const MyListPage = () => {
   const router = useRouter();
@@ -19,7 +20,7 @@ const MyListPage = () => {
   ]);
 
   const [showConfirmation, setShowConfirmation] = useState(false);
-  const [itemToDelete, setItemToDelete] = useState<number | null>(null); 
+  const [itemToDelete, setItemToDelete] = useState<number | null>(null);
 
   const handleTabChange = (tab: 'notifications-admin' | 'mylist-admin') => {
     setActiveTab(tab);
@@ -43,12 +44,16 @@ const MyListPage = () => {
     }
     setShowConfirmation(false);
     setItemToDelete(null);
-    alert('Event berhasil dihapus dan pendaftaranmu telah dibatalkan.');
+    alert('Event berhasil dihapus dan dibatalkan');
   };
 
   const handleCancelDelete = () => {
     setShowConfirmation(false);
     setItemToDelete(null);
+  };
+
+  const handleEditClick = () => {
+    router.push('/add-event');
   };
 
   return (
@@ -105,7 +110,7 @@ const MyListPage = () => {
               <p className="mt-1 text-sm text-gray-700">{item.description}</p>
             </div>
 
-            {/* List Icon */}
+            {/* Cancel Button */}
             <div className="-ml-11">
               <button
                 onClick={() => handleCancelClick(item.id)}
@@ -141,6 +146,16 @@ const MyListPage = () => {
         </div>
       )}
 
+
+      {/* Edit Button */}
+      <div className="relative w-full h-80 max-w-xs mt-4">
+        <button
+          onClick={handleEditClick}
+          className="absolute bottom-16 right-4 p-4 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 focus:outline-none z-20"
+        >
+      <FiPlus size={24} />
+        </button>
+      </div>
       {/* Footer */}
       <Navbar />
     </div>

@@ -57,7 +57,7 @@ const MyListPage = () => {
     }
     setShowConfirmation(false);
     setItemToDelete(null);
-    alert('Event berhasil dihapus dan pendaftaranmu telah dibatalkan.'); // Show success message
+    alert('Event berhasil dihapus dan pendaftaranmu telah dibatalkan.'); 
   };
 
   const handleCancelDelete = () => {

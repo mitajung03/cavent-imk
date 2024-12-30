@@ -38,6 +38,7 @@ const SignUp = () => {
       'himahi@paramadina.ac.id',
       'himamen@paramadina.ac.id',
       'komik@paramadina.ac.id',
+      'dkm@paramadina.ac.id'
     ];
 
     if (password !== confirmPassword) {

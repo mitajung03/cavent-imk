@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { MdDateRange, MdAccessTime, MdOutlineEventAvailable, MdLocationOn, MdClose, MdEdit } from 'react-icons/md';
-import Navbar from '../components/navbar';
+import Navbar from '../components/navbaradmin';
 
 const Events = () => {
     const router = useRouter();

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { FaBell } from 'react-icons/fa';
-import Navbar from '../components/navbaradmin';
+import Navbar from '../components/navbar';
 
 const NotificationsPage = () => {
   const router = useRouter();
@@ -36,12 +36,11 @@ const NotificationsPage = () => {
 
   const handleTabChange = (tab: 'notifications' | 'mylist') => {
     setActiveTab(tab);
-    localStorage.setItem('lastVisitedTab', tab); // Store last visited tab
-
+    localStorage.setItem('lastVisitedTab', tab); 
     if (tab === 'notifications') {
-      router.push('/notification'); // Navigate to the Notification page
+      router.push('/notification');
     } else if (tab === 'mylist') {
-      router.push('/mylist'); // Navigate to the My List page
+      router.push('/mylist');
     }
   };
 
